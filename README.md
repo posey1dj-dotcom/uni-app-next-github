@@ -8,20 +8,28 @@
 - Dify 集成：通过后端代理转发，隐藏 API Key，支持灵活的策略控制。
 
 ## 架构与目录
-`
+
 .
-├─ backend/                # Node.js + Express 后端
-│  ├─ src/                 # 业务代码（路由/控制器/服务/中间件）
-│  ├─ package.json
-│  └─ .env.example         # 环境变量示例
-├─ miniprogram/            # 微信小程序前端
-│  ├─ pages/
-│  ├─ utils/
-│  └─ app.js
-├─ .gitignore
-├─ README.md
+├─ backend/  
+│  Node.js + Express 后端  
+│
+│  ├─ src/  
+│  │  业务代码（路由 / 控制器 / 服务 / 中间件）  
+│  ├─ package.json  
+│  └─ .env.example  
+│     环境变量示例  
+│
+├─ miniprogram/  
+│  微信小程序前端  
+│
+│  ├─ pages/  
+│  ├─ utils/  
+│  └─ app.js  
+│
+├─ .gitignore  
+├─ README.md  
 └─ LICENSE
-`
+
 
 ## 运行前提
 - Node.js ≥ 18
