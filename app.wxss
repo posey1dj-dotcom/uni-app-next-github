@@ -1,0 +1,156 @@
+/* 全局样式 */
+page {
+  background-color: #F5F5F5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 通用容器 */
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+/* 卡片样式 */
+.card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮样式 */
+.btn {
+  background: #4A90E2;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:active {
+  background: #357ABD;
+}
+
+.btn-secondary {
+  background: #F5F5F5;
+  color: #333333;
+  border: 1rpx solid #DDDDDD;
+}
+
+.btn-secondary:active {
+  background: #E5E5E5;
+}
+
+/* 输入框样式 */
+.input {
+  width: 100%;
+  padding: 20rpx;
+  border: 1rpx solid #DDDDDD;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  background: #FFFFFF;
+}
+
+.input:focus {
+  border-color: #4A90E2;
+  outline: none;
+}
+
+/* 文本样式 */
+.text-primary {
+  color: #4A90E2;
+}
+
+.text-secondary {
+  color: #666666;
+}
+
+.text-muted {
+  color: #999999;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 布局工具 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 间距工具 */
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+.ml-10 { margin-left: 10rpx; }
+.ml-20 { margin-left: 20rpx; }
+.mr-10 { margin-right: 10rpx; }
+.mr-20 { margin-right: 20rpx; }
+
+.p-10 { padding: 10rpx; }
+.p-20 { padding: 20rpx; }
+.p-30 { padding: 30rpx; }
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 40rpx;
+  color: #999999;
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: #999999;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .container {
+    padding: 16rpx;
+  }
+  
+  .card {
+    padding: 20rpx;
+    margin-bottom: 16rpx;
+  }
+}
+
+
+
+
+

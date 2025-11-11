@@ -1,0 +1,246 @@
+/* 首页样式 */
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+/* 调试信息区域 */
+.debug-info {
+  background: #FFF3E0;
+  border: 1rpx solid #FFB74D;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.debug-text {
+  font-size: 24rpx;
+  color: #E65100;
+  line-height: 1.5;
+  margin-bottom: 8rpx;
+}
+
+.debug-text:last-child {
+  margin-bottom: 0;
+}
+
+/* 环境信息区域 */
+.env-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.env-badge {
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.env-badge.development {
+  background: #4CAF50;
+}
+
+.env-badge.trial {
+  background: #FF9800;
+}
+
+.env-badge.production {
+  background: #2196F3;
+}
+
+.mock-status {
+  padding: 6rpx 12rpx;
+  background: #E1F5FE;
+  color: #0277BD;
+  border-radius: 16rpx;
+  font-size: 22rpx;
+  border: 1rpx solid #B3E5FC;
+}
+
+.welcome-section {
+  text-align: center;
+  padding: 60rpx 40rpx;
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  color: #FFFFFF;
+  border-radius: 0 0 30rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.welcome-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.welcome-subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* 功能卡片区域 */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.feature-card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:active {
+  transform: scale(0.95);
+}
+
+.feature-card.disabled {
+  opacity: 0.5;
+}
+
+.feature-icon {
+  font-size: 48rpx;
+  margin-bottom: 20rpx;
+}
+
+.feature-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+
+.feature-desc {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.4;
+}
+
+/* 快速开始区域 */
+.quick-start-section {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+}
+
+.quick-input-area {
+  display: flex;
+  gap: 20rpx;
+}
+
+.quick-input {
+  flex: 1;
+  padding: 20rpx;
+  border: 1rpx solid #DDDDDD;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.quick-send-btn {
+  background: #4A90E2;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  white-space: nowrap;
+}
+
+.quick-send-btn:active {
+  background: #357ABD;
+}
+
+/* 使用说明区域 */
+.help-section {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.help-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.help-item:last-child {
+  margin-bottom: 0;
+}
+
+.help-number {
+  width: 40rpx;
+  height: 40rpx;
+  background: #4A90E2;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-right: 20rpx;
+}
+
+.help-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* 环境提示区域 */
+.env-tip {
+  background: #E8F5E8;
+  border: 1rpx solid #C8E6C9;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #2E7D32;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .features-section {
+    grid-template-columns: 1fr;
+    gap: 16rpx;
+  }
+  
+  .welcome-section {
+    padding: 40rpx 20rpx;
+  }
+  
+  .quick-input-area {
+    flex-direction: column;
+  }
+  
+  .quick-send-btn {
+    width: 100%;
+  }
+}

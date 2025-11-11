@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "miniprogram/pages/index/index",
+    "miniprogram/pages/chat/chat",
+    "miniprogram/pages/profile/profile",
+    "miniprogram/pages/history/history"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90E2",
+    "navigationBarTitleText": "智能对话助手",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90E2",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "miniprogram/pages/index/index",
+        "text": "首页",
+        "iconPath": "miniprogram/images/home.png",
+        "selectedIconPath": "miniprogram/images/home-active.png"
+      },
+      {
+        "pagePath": "miniprogram/pages/chat/chat",
+        "text": "对话",
+        "iconPath": "miniprogram/images/chat.png",
+        "selectedIconPath": "miniprogram/images/chat-active.png"
+      },
+      {
+        "pagePath": "miniprogram/pages/history/history",
+        "text": "历史",
+        "iconPath": "miniprogram/images/history.png",
+        "selectedIconPath": "miniprogram/images/history-active.png"
+      },
+      {
+        "pagePath": "miniprogram/pages/profile/profile",
+        "text": "我的",
+        "iconPath": "miniprogram/images/profile.png",
+        "selectedIconPath": "miniprogram/images/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "miniprogram/sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
+
+
+

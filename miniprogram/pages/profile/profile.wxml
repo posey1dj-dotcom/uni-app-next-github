@@ -1,0 +1,96 @@
+<view class="profile-container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="avatar-section">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickName || '未登录'}}</text>
+        <text class="user-id" wx:if="{{userInfo.userId}}">ID: {{userInfo.userId}}</text>
+        <text class="role-tag" wx:if="{{userInfo.role}}">角色：{{userInfo.role}}</text>
+        <text class="status-tag" wx:if="{{userInfo.status === 1 || userInfo.status === 0}}">状态：{{userInfo.status === 1 ? '正常' : '禁用'}}</text>
+      </view>
+    </view>
+    <view class="stats-section">
+      <view class="stat-item">
+        <text class="stat-number">{{userStats.totalChats || 0}}</text>
+        <text class="stat-label">总对话数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{userStats.todayChats || 0}}</text>
+        <text class="stat-label">今日对话</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{userStats.totalTokens || 0}}</text>
+        <text class="stat-label">总字数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToHistory">
+        <view class="menu-icon">📚</view>
+        <text class="menu-text">对话历史</text>
+        <view class="menu-arrow">></view>
+      </view>
+      <view class="menu-item" bindtap="goToChat">
+        <view class="menu-icon">💬</view>
+        <text class="menu-text">开始对话</text>
+        <view class="menu-arrow">></view>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="showAbout">
+        <view class="menu-icon">ℹ️</view>
+        <text class="menu-text">关于我们</text>
+        <view class="menu-arrow">></view>
+      </view>
+      <view class="menu-item" bindtap="showFeedback">
+        <view class="menu-icon">📝</view>
+        <text class="menu-text">意见反馈</text>
+        <view class="menu-arrow">></view>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="clearCache">
+        <view class="menu-icon">🗑️</view>
+        <text class="menu-text">清除缓存</text>
+        <view class="menu-arrow">></view>
+      </view>
+      <view class="menu-item" bindtap="showPrivacy">
+        <view class="menu-icon">🔒</view>
+        <text class="menu-text">隐私政策</text>
+        <view class="menu-arrow">></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+
+  <!-- 登录提示 -->
+  <view class="login-tip" wx:if="{{!isLoggedIn}}">
+    <text class="tip-text">请先登录以使用完整功能</text>
+    <button class="login-btn" bindtap="login">立即登录</button>
+  </view>
+
+  <!-- 权限提示（已登录但无对话权限） -->
+  <view class="permission-tip" wx:if="{{isLoggedIn && (userInfo.status !== 1 || (userInfo.role && (userInfo.role === 'banned')))}}">
+    当前账号无权使用对话功能，请联系管理员开通权限。
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text class="version-text">版本 1.0.0</text>
+  </view>
+</view>
+
+
+
+
+

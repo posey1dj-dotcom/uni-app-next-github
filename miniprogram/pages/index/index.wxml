@@ -1,0 +1,86 @@
+<view class="container">
+  <!-- 调试信息区域 -->
+  <view class="debug-info" wx:if="{{currentEnv === 'development' || currentEnv === 'trial'}}">
+    <view class="debug-text">调试模式：{{currentEnv}}</view>
+    <view class="debug-text">模拟模式：{{isMockMode ? '是' : '否'}}</view>
+    <view class="debug-text">登录状态：{{isLoggedIn ? '已登录' : '未登录'}}</view>
+  </view>
+
+  <!-- 环境信息提示 -->
+  <view class="env-info">
+    <view class="env-badge {{currentEnv}}">{{currentEnv === 'trial' ? '体验版' : currentEnv === 'development' ? '开发版' : '正式版'}}</view>
+    <view class="mock-status" wx:if="{{isMockMode}}">模拟模式</view>
+  </view>
+
+  <!-- 欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-title">欢迎使用智能对话助手</view>
+    <view class="welcome-subtitle">基于AI技术的智能对话系统，为您提供专业的问答服务</view>
+  </view>
+
+  <!-- 功能卡片区域 -->
+  <view class="features-section">
+    <view class="feature-card {{(isLoggedIn && userInfo && (userInfo.status !== 1 || (userInfo.role && userInfo.role === 'banned'))) ? 'disabled' : ''}}" bindtap="goToChat">
+      <view class="feature-icon">💬</view>
+      <view class="feature-title">开始对话</view>
+      <view class="feature-desc">与AI助手进行智能对话</view>
+    </view>
+    
+    <view class="feature-card {{(isLoggedIn && userInfo && (userInfo.status !== 1 || (userInfo.role && userInfo.role === 'banned'))) ? 'disabled' : ''}}" bindtap="goToHistory">
+      <view class="feature-icon">📚</view>
+      <view class="feature-title">对话历史</view>
+      <view class="feature-desc">查看历史对话记录</view>
+    </view>
+    
+    <view class="feature-card" bindtap="goToProfile">
+      <view class="feature-icon">👤</view>
+      <view class="feature-title">个人中心</view>
+      <view class="feature-desc">管理个人信息和设置</view>
+    </view>
+  </view>
+
+  <!-- 快速开始区域 -->
+  <view class="quick-start-section">
+    <view class="section-title">快速开始</view>
+    <view class="quick-input-area">
+      <input 
+        class="quick-input" 
+        placeholder="输入您的问题..." 
+        value="{{quickQuestion}}"
+        bindinput="onQuickInput"
+        bindconfirm="sendQuickQuestion"
+      />
+      <button class="quick-send-btn" bindtap="sendQuickQuestion">发送</button>
+    </view>
+  </view>
+
+  <!-- 使用说明 -->
+  <view class="help-section">
+    <view class="section-title">使用说明</view>
+    <view class="help-item">
+      <view class="help-number">1</view>
+      <view class="help-text">点击"开始对话"进入对话界面</view>
+    </view>
+    <view class="help-item">
+      <view class="help-number">2</view>
+      <view class="help-text">输入您的问题，AI助手会为您解答</view>
+    </view>
+    <view class="help-item">
+      <view class="help-number">3</view>
+      <view class="help-text">查看"对话历史"回顾之前的对话</view>
+    </view>
+  </view>
+
+  <!-- 环境提示 -->
+  <view class="env-tip">
+    <view class="tip-text" wx:if="{{currentEnv === 'trial'}}">
+      体验版：所有功能均可直接使用，数据为模拟数据
+    </view>
+    <view class="tip-text" wx:elif="{{currentEnv === 'development'}}">
+      开发版：所有功能均可直接使用，数据为模拟数据
+    </view>
+    <view class="tip-text" wx:else>
+      正式版：需要登录后使用，数据为真实数据
+    </view>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+<!--聊天页面-->
+<view class="chat-container">
+  <!-- 调试信息 -->
+  <view class="debug-info" wx:if="{{currentEnv === 'development'}}">
+    <view class="debug-text">状态: {{isInputEmpty ? '输入为空' : '有输入内容'}}</view>
+    <view class="debug-text">发送中: {{isSending ? '是' : '否'}}</view>
+    <view class="debug-text">输入长度: {{inputMessage.length}}</view>
+  </view>
+  
+  <!-- 聊天记录区域 -->
+  <scroll-view class="chat-messages" scroll-y="true" scroll-into-view="{{scrollToMessage}}" scroll-with-animation="true">
+    <view class="message-list">
+      <block wx:for="{{messages}}" wx:key="id">
+        <view class="message-item {{item.type === 'user' ? 'user-message' : 'bot-message'}}" id="msg-{{item.id}}">
+          <view class="message-avatar">
+            <image src="{{item.type === 'user' ? userAvatar : aiAvatar}}" class="avatar-img"></image>
+          </view>
+          <view class="message-content">
+            <view class="message-text">{{item.content}}</view>
+            <view class="message-time">{{item.time}}</view>
+          </view>
+        </view>
+      </block>
+
+      <!-- 正在输入指示 -->
+      <view class="message-item bot-message loading-message" wx:if="{{isSending}}">
+        <view class="message-avatar">
+          <image src="{{aiAvatar}}" class="avatar-img"></image>
+        </view>
+        <view class="message-content">
+          <view class="typing-indicator">
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+            <view class="typing-dot"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="chat-input-area">
+    <view class="input-container">
+             <textarea 
+         class="message-input" 
+         placeholder="请输入您的问题..." 
+         value="{{inputMessage}}"
+         bindinput="onInputChange"
+         auto-height="true"
+         maxlength="500"
+         show-confirm-bar="false"
+       ></textarea>
+               <view class="button-group">
+          <button 
+            class="send-btn {{!isInputEmpty ? 'active' : ''}}" 
+            bindtap="sendMessage"
+            disabled="{{isInputEmpty}}"
+          >
+            {{isSending ? '发送中...' : '发送'}}
+          </button>
+        </view>
+        <view class="status-indicator" wx:if="{{isSending}}">
+          <text class="status-text">正在处理您的消息...</text>
+        </view>
+    </view>
+  </view>
+
+  <!-- 快捷问题区域 -->
+  <view class="quick-questions">
+    <view class="quick-title">快速提问</view>
+    <view class="quick-list">
+      <view 
+        class="quick-item" 
+        wx:for="{{quickQuestions}}" 
+        wx:key="*this" 
+        data-question="{{item}}"
+        bindtap="sendQuickQuestion"
+      >{{item}}</view>
+    </view>
+  </view>
+</view>

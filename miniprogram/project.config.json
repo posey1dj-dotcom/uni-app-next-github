@@ -1,0 +1,109 @@
+{
+  "description": "对话式机器人微信小程序",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": false,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": false,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": false,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "ignoreUploadUnusedFiles": false
+  },
+  "compileType": "miniprogram",
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "packOptions": {
+    "ignore": [
+      {
+        "value": ".eslintrc.js",
+        "type": "file"
+      },
+      {
+        "value": "*.md",
+        "type": "file"
+      }
+    ],
+    "include": [
+      {
+        "value": "app.js",
+        "type": "file"
+      },
+      {
+        "value": "app.json",
+        "type": "file"
+      },
+      {
+        "value": "app.wxss",
+        "type": "file"
+      },
+      {
+        "value": "sitemap.json",
+        "type": "file"
+      },
+      {
+        "value": "config/env.js",
+        "type": "file"
+      },
+      {
+        "value": "images/*.png",
+        "type": "file"
+      },
+      {
+        "value": "pages/index/*",
+        "type": "folder"
+      },
+      {
+        "value": "pages/chat/*",
+        "type": "folder"
+      },
+      {
+        "value": "pages/history/*",
+        "type": "folder"
+      },
+      {
+        "value": "pages/profile/*",
+        "type": "folder"
+      }
+    ]
+  },
+  "appid": "",
+  "libVersion": "3.9.3",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "cloudfunctionRoot": "../cloudfunctions/"
+}

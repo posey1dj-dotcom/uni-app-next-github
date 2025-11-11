@@ -1,0 +1,134 @@
+<view class="container">
+  <!-- 调试信息 -->
+  <view class="debug-info" wx:if="{{currentEnv === 'development' || currentEnv === 'trial'}}">
+    <view class="debug-text">当前环境: {{currentEnv}}</view>
+    <view class="debug-text">模拟模式: {{isMockMode ? '是' : '否'}}</view>
+    <view class="debug-text">会话数量: {{conversations.length}}</view>
+  </view>
+
+  <!-- 权限提示：已登录但无权限 -->
+  <view class="login-tip" wx:if="{{!isMockMode && currentEnv === 'release' && isLoggedIn && (userInfo.status !== 1 || (userInfo.role && userInfo.role === 'banned'))}}">
+    <view class="tip-text">当前账号无权限查看历史记录，请联系管理员开通</view>
+    <button class="login-btn" bindtap="goToChat">去对话</button>
+  </view>
+
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="page-title">对话历史</view>
+    <view class="header-actions">
+      <button class="action-btn" bindtap="refreshHistory">刷新</button>
+      <button class="action-btn danger" bindtap="clearHistory">清空</button>
+    </view>
+  </view>
+
+  <!-- 会话列表 -->
+  <view class="conversations-section" wx:if="{{conversations.length > 0}}">
+    <view class="section-title">会话列表</view>
+    <view class="conversation-list">
+      <view 
+        wx:for="{{conversations}}" 
+        wx:key="conversation_id"
+        class="conversation-item"
+        bindtap="viewConversation"
+        data-conversation="{{item}}"
+      >
+        <view class="conversation-content">
+          <view class="conversation-preview">
+            <view class="preview-text">{{item.last_user_message}}</view>
+            <view class="preview-reply">{{item.last_bot_reply}}</view>
+          </view>
+          <view class="conversation-meta">
+            <view class="message-count">{{item.message_count}}条消息</view>
+            <view class="last-time">{{item.last_message_time}}</view>
+          </view>
+        </view>
+        <view class="conversation-arrow">></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 对话记录列表 -->
+  <view class="history-section" wx:if="{{currentConversation}}">
+    <view class="section-header">
+      <view class="back-btn" bindtap="backToConversations">← 返回会话</view>
+      <view class="conversation-title">会话详情</view>
+      <view class="clear-btn" bindtap="clearCurrentConversation">清空</view>
+    </view>
+    
+    <view class="message-list">
+      <view 
+        wx:for="{{messages}}" 
+        wx:key="id"
+        class="message-item {{item.user_message ? 'message-user' : 'message-bot'}}"
+      >
+        <view class="message-avatar">
+          {{item.user_message ? '👤' : '🤖'}}
+        </view>
+        <view class="message-content">
+          <view class="message-text">
+            {{item.user_message || item.bot_reply}}
+          </view>
+          <view class="message-meta">
+            <view class="message-time">{{item.created_at}}</view>
+            <view class="message-actions" wx:if="{{!item.user_message}}">
+              <button 
+                class="action-btn small"
+                bindtap="copyMessage"
+                data-content="{{item.bot_reply}}"
+              >
+                复制
+              </button>
+              <button 
+                class="action-btn small {{item.liked ? 'liked' : ''}}"
+                bindtap="toggleLike"
+                data-id="{{item.id}}"
+              >
+                {{item.liked ? '已赞' : '点赞'}}
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 分页 -->
+    <view class="pagination" wx:if="{{pagination.pages > 1}}">
+      <button 
+        class="page-btn {{pagination.page <= 1 ? 'disabled' : ''}}"
+        bindtap="prevPage"
+        disabled="{{pagination.page <= 1}}"
+      >
+        上一页
+      </button>
+      <view class="page-info">
+        {{pagination.page}} / {{pagination.pages}}
+      </view>
+      <button 
+        class="page-btn {{pagination.page >= pagination.pages ? 'disabled' : ''}}"
+        bindtap="nextPage"
+        disabled="{{pagination.page >= pagination.pages}}"
+      >
+        下一页
+      </button>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!currentConversation && conversations.length === 0}}">
+    <view class="empty-icon">📚</view>
+    <view class="empty-text">暂无对话历史</view>
+    <view class="empty-desc">开始对话后，您的对话记录将显示在这里</view>
+    <button class="primary-btn" bindtap="goToChat">开始对话</button>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+</view>
+
+
+
+
+
